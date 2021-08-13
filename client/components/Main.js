@@ -1,7 +1,14 @@
 import React from 'react';
 import { fetchDrink } from '../redux/reducers';
 import { connect } from 'react-redux';
-import { StyleSheet, Text, View, Button, ScrollView } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  ScrollView,
+  Image,
+} from 'react-native';
 function Main(props) {
   const { getDrink, drink } = props;
 
@@ -10,11 +17,13 @@ function Main(props) {
   };
 
   return (
-    <ScrollView style={styles.mainContainer}>
+    <View style={styles.mainContainer}>
       {drink ? (
         <View style={styles.drinkContainer}>
-          <Image style={styles.imgContainer} source={{ uri: drink.imgUrl }} />
-          <View id="drink-text">
+          <View style={styles.imgContainer}>
+            <Image source={{ uri: drink.imgUrl }} />
+          </View>
+          <View style={styles.textContainer}>
             <Text>{drink.name}</Text>
             <Text>
               {drink.alcoholic} {drink.category}
@@ -38,38 +47,47 @@ function Main(props) {
           </View>
         </View>
       )}
-      <View className="search-bar">
+      <View style={styles.searchButton}>
         <Button
           onPress={() => {
-            handleSubmit;
+            handleSubmit();
           }}
           title="Find a Random Drink"
         />
       </View>
-    </ScrollView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   mainContainer: {
     display: 'flex',
-    maxWidth: '500px',
-    justifyContent: 'center',
+    flex: 1,
+    justifyContent: 'space-around',
     flexDirection: 'column',
     backgroundColor: '#93e1d8',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   drinkContainer: {
     display: 'flex',
+    flex: 6,
     justifyContent: 'center',
     flexDirection: 'column',
-    maxWidth: '500px'
-  },
-  imgContainer {
     maxWidth: '500px',
-    border: '1px solid black'
-  }
-})
+  },
+  imgContainer: {
+    border: '1px solid black',
+    flex: 3,
+  },
+  textContainer: {
+    flex: 1,
+  },
+  searchButton: {
+    height: '100px',
+    backgroundColor: 'red',
+    flex: 1,
+  },
+});
 
 const mapStateToProps = (state) => {
   return {
