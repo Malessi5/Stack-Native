@@ -32,14 +32,6 @@ h1 {
   width: 100vw;
   height: 100vh;
 }
-.main-container {
-  display: flex;
-  max-width: 500px;
-  justify-content: center;
-  flex-direction: column;
-  background-color: #93e1d8;
-  align-items: center;
-}
 
 #drink-container {
   display: flex;

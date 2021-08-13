@@ -13,11 +13,13 @@ export default function App() {
     //   <StatusBar style="auto" />
     // </View>
     <Provider store={store}>
-      <Router>
-        <Switch>
-          <Route exact path="/" component={Main} />
-        </Switch>
-      </Router>
+      <View style={styles.main}>
+        <Router>
+          <Switch>
+            <Route exact path="/" component={Main} />
+          </Switch>
+        </Router>
+      </View>
     </Provider>
   );
 }
@@ -28,5 +30,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  main: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100vw',
+    height: '100vh',
   },
 });

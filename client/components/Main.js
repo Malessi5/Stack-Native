@@ -1,7 +1,7 @@
 import React from 'react';
 import { fetchDrink } from '../redux/reducers';
 import { connect } from 'react-redux';
-
+import { StyleSheet, Text, View, Button, ScrollView } from 'react-native';
 function Main(props) {
   const { getDrink, drink } = props;
 
@@ -10,10 +10,10 @@ function Main(props) {
   };
 
   return (
-    <ScrollView className="main-container">
+    <ScrollView style={styles.mainContainer}>
       {drink ? (
-        <View id="drink-container">
-          <Image source={{ uri: drink.imgUrl }} />
+        <View style={styles.drinkContainer}>
+          <Image style={styles.imgContainer} source={{ uri: drink.imgUrl }} />
           <View id="drink-text">
             <Text>{drink.name}</Text>
             <Text>
@@ -49,6 +49,27 @@ function Main(props) {
     </ScrollView>
   );
 }
+
+const styles = StyleSheet.create({
+  mainContainer: {
+    display: 'flex',
+    maxWidth: '500px',
+    justifyContent: 'center',
+    flexDirection: 'column',
+    backgroundColor: '#93e1d8',
+    alignItems: 'center'
+  },
+  drinkContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    flexDirection: 'column',
+    maxWidth: '500px'
+  },
+  imgContainer {
+    maxWidth: '500px',
+    border: '1px solid black'
+  }
+})
 
 const mapStateToProps = (state) => {
   return {
